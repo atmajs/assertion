@@ -21,7 +21,7 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 	// Substring search
 	assert.has(String, String | RegExp, ?message);
 	
-	// Simple property existance check
+	// Simple property existence check
 	assert.has(Object, String);
 	
 	// Sub-object match
@@ -34,7 +34,7 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 	assert.has(Array, Array);
 	```
 	
-	> When checking arrays or objects deep matching is performed. See [tests](tree/master/test/has.test)
+	> When checking arrays or objects, deep matching is performed. See [tests](blob/master/test/has.test)
 	
 	```javascript
 	
@@ -68,7 +68,7 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 		// Check by Contructor (instanceof)
 		assert.is(Any, Function);
 	```
-	Typename are extracted from `Object.prototype.toString.call`, so these are:
+	Typename is extracted from `Object.prototype.toString.call`, so these are:
 	```javascript
 		'String'
 		'Number'
@@ -81,7 +81,7 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 		'HTML**' // DOM Node, e.g. HTMLBodyElement
 		'CustomEvent'
 		...
-		all other buit-in types
+		all other built-in types
 	```
 	
 - `await`
@@ -91,10 +91,10 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 	```javascript
 		// ! Arguments order does not matter
 		var fn = assert.await(
-			String /*optional - name of this wrapper
-			Function/*optional - wrap the function */,
-			Object/*optional - use binded context */,
-			Number/*optional - expectation count, default is `1`*/
+			String   /* optional - name of this wrapper */
+			Function /* optional - wrap the function */,
+			Object   /* optional - use binded context */,
+			Number   /* optional - expectation count, default is `1` */
 		);
 		
 		// creates item in assert.callbacks
