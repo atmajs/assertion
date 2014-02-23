@@ -1,0 +1,17 @@
+{
+    "name": "assertion",
+    "version": "0.99.95",
+    "description": "Assertion Library",
+    "main": "lib/assert.js",
+    "scripts": {
+        "test": "node_modules/.bin/atma test"
+    },
+    "keywords": [
+        "assert", "assertions", "test", "TDD", "unit test"
+    ],
+    "author": "Alexander Kit <alex.kit@atmajs.com",
+    "license": "MIT",
+    "devDependencies": {
+        "atma": "latest"
+    }
+}

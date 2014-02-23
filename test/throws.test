@@ -1,0 +1,57 @@
+UTest({
+	
+	'throws': function(){
+		
+		eq(typeof A.assert.AssertionError, 'function');
+		
+		throws([thrower, A.assert.AssertionError], A.assert.AssertionError);
+		throws([thrower, TypeError]);
+		
+		
+		var assume = assert.callback(function(){});
+		try {
+			A.assert.throws([thrower, TypeError], A.assert.AssertionError);
+		} catch (error) {
+			assume();
+			assert(error instanceof TypeError);
+			eq(error.message, 'bazerror');
+		}
+		
+		assume = assert.callback(function(){});
+		try {
+			A.assert.doesNotThrow([thrower, TypeError]);
+		} catch(error) {
+			assume();
+			assert(error instanceof TypeError);
+			eq(error.message, 'bazerror');
+		}
+		
+		assert.throws(function() { A.assert.ifError(new Error('test error')) });
+		assert.doesNotThrow(function() { A.assert.ifError(null) });
+		assert.doesNotThrow(function() { A.assert.ifError() });
+		
+		assume = assert.callback(function(){});
+		try {
+			A.assert.throws(function() { throw ({}); }, Array);
+		} catch (e) {
+			assume();
+		}
+
+		
+		// use a RegExp to validate error message
+		A.assert.throws([thrower, TypeError], /baz/);
+		
+		// use a fn to validate error object
+		A.assert.throws([thrower, TypeError], function(err) {
+			if ((err instanceof TypeError) && /baz/.test(err)) 
+				return true;
+		});
+
+
+	}
+	
+})
+
+function thrower(Ctor) {
+	throw new Ctor('bazerror');
+}

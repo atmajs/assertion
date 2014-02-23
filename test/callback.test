@@ -1,0 +1,11 @@
+
+UTest({
+	'callback': function(){
+		
+		var await = A.assert.await();
+		
+		eq(A.assert.callbacks, 1);
+		await();
+		eq(A.assert.callbacks, 0);
+	}
+});

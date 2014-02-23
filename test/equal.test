@@ -1,0 +1,62 @@
+
+UTest({
+	
+	'equal': function(){
+		
+		checkMany([
+			['equal', 1, 1, 0],
+			['equal', 'foo', new String('foo'), 'bar'],
+			['equal', null, null, 0],
+			
+			['notEqual', 1, 0, 1],
+			['notEqual', 'foo', 'for', 'foo'],
+			['notEqual', null, 0, null],
+			
+			['deepEqual', new Date(2014, 1, 1), new Date(2014, 1, 1), new Date(2014, 1, 2)],
+			['deepEqual', /a/i, new RegExp('a', 'i'), /a/g],
+			
+			['notDeepEqual', new Date(2014, 1, 1), new Date(2014, 1, 2), new Date(2014, 1, 1)],
+			['notDeepEqual', /a/i, new RegExp('a', 'g'), /a/i],
+			
+			
+			['deepEqual', {a: 4}, {a: 4}],
+			['deepEqual', {a: 4, b: '2'}, {a: 4, b: '2'}],
+			['deepEqual', [4], ['4']],
+			['notDeepEqual', {a: 4}, {a: 4, b: true}],
+			['deepEqual', ['a'], {0: 'a'}],
+			['deepEqual', {a: 4, b: '1'}, {b: '1', a: 4}]
+		]);
+		
+		
+		var a = [1, '', null],
+			b = [1, '', null]
+			;
+		a.foo = 'foo';
+		b.foo = 'foo';
+		
+		checkMany('deepEqual', [
+			[a , b],
+			[Object.keys(a), Object.keys(b)]
+		]);
+		
+	},
+	
+	'deepEqual - circular': function(){
+		var b, c;
+		
+		b = {};
+		b.b = b;
+		
+		c = {};
+		c.b = c;
+		
+		var assume = assert.callback(function(){});
+		try {
+			A.assert.deepEqual(b, c);
+		} catch (e) {
+			
+			assume();
+		}
+	}
+	
+})
