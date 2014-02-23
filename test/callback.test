@@ -2,10 +2,17 @@
 UTest({
 	'callback': function(){
 		
-		var await = A.assert.await();
+		var await = A.assert.await('foo', 2);
 		
-		eq(A.assert.callbacks, 1);
+		eq(A.assert.callbacks.length, 1);
+		eq(A.assert.callbacks[0].count, 2);
+		eq(A.assert.callbacks[0].name, 'foo');
+		
 		await();
-		eq(A.assert.callbacks, 0);
+		eq(A.assert.callbacks.length, 1);
+		eq(A.assert.callbacks[0].count, 1);
+		
+		await();
+		eq(A.assert.callbacks.length, 0);
 	}
 });

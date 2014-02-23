@@ -86,24 +86,40 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 	
 - `await`
 	**Wait for a callback**
+	
 	Create a wrapper function to ensure that the function is called.
 	```javascript
-		assert.await(
-			Function/*optional - wrap function */,
-			Context/*optional - use binded context */,
+		// ! Arguments order does not matter
+		var fn = assert.await(
+			String /*optional - name of this wrapper
+			Function/*optional - wrap the function */,
+			Object/*optional - use binded context */,
 			Number/*optional - expectation count, default is `1`*/
 		);
 		
+		// creates item in assert.callbacks
+		[
+			{
+				name: String,
+				error: Error, // to receive the stack trace
+				count: Number
+			}
+		];
+		
+		// after the `fn` function is called `count` times, then the object is removed
+		// from the callbacks set
+		
+		
 		// Example
 		var fn = assert.await();
-		assert.callbacks === 1;
+		assert.callbacks.length === 1;
 		try {
 			throw new Error()
 		} catch {
 			fn();
 		}
 		
-		assert.callbacks === 0;
+		assert.callbacks.length === 0;
 		
 	```
 	
