@@ -34,7 +34,7 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 	assert.has(Array, Array);
 	```
 	
-	> When checking arrays or objects, deep matching is performed. See [tests](blob/master/test/has.test)
+	> When checking arrays or objects, deep matching is performed. See [tests](https://github.com/atmajs/assertion/blob/master/test/has.test)
 	
 	```javascript
 	
