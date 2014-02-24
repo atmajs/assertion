@@ -2,29 +2,43 @@ UTest({
 	
 	'error listener': function(){
 		
-		function listener(error) {
-			assume();
+		function fail(error) {
+			_fail();
 			notEq(error.message.indexOf(expect), -1);
-			assert(error instanceof A.assert.AssertionError);
+			assert(error instanceof A.assert.AssertionError)
+		}
+		function start(){
+			_start();
+		}
+		function success(){
+			_success();
 		}
 		
-		var assume,
+		var _start = assert.await(4),
+			_success = assert.await(1),
+			_fail = assert.await(2),
 			expect;
 		
-		A.assert.on(listener);
+		A.assert.on('start', start);
+		A.assert.on('fail', fail);
+		A.assert.on('success', success);
 		
+		//> fail
 		expect = 'String not equal';
-		assume = assert.callback(function(){});
 		A.assert.eq('a', 'b', expect);
 		
+		//> fail
 		expect = 'Array not equal';
-		assume = assert.callback(function(){});
 		A.assert.deepEq([3], [2, 3], expect);
 		
+		//> success
+		A.assert.has('foo', 'oo');
 		
-		A.assert.off(listener);
 		
-		var errorFn = assert.callback(function(){});
+		A.assert.off('fail', fail);
+		
+		//> throw
+		var errorFn = assert.await();
 		try {
 			A.assert.has('one', 'eno');
 		} catch(error) {

@@ -12,10 +12,6 @@ var fail;
 			stackStartFunction: stackStartFunction
 		});
 		
-		
-		if (__listeners.emit(error))
-			return;
-		
 		throw error;
 	};
 

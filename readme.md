@@ -172,9 +172,16 @@ npm install assertion
 	
 - Listener
 	
-	You can attach listener to the assertions, so that the expceptions are not thrown, but passed to the listener.
+	You can attach listener to the assertions.
+	Event Types:
+	- start
+	- fail
+		> if `fail` type listener is attached, then exceptions are not thrown.
+	- success
+	
 	```javascript
-	assert.on(function(error){
+	// sample
+	assert.on('fail', function(error){
 		error instanceof assert.AssertionError;
 	});
 	```
