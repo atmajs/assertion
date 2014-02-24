@@ -1,6 +1,6 @@
 module.exports = {
 	env: [
-		'/lib/assert.js::A',
+		'/lib/assert.include.js::A',
 		'/test/utils.js::throws'
 	],
 	

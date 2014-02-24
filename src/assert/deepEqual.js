@@ -14,6 +14,9 @@
 			fail(actual, expected, message, 'notDeepEqual', assert.notDeepEqual);
 	};
 	
+	assert.deepEq = assert.deepEqual;
+	assert.notDeepEq = assert.notDeepEqual;
+	
 	function _deepEqual(a, b) {
 		
 		if (a === b) 

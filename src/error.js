@@ -4,13 +4,19 @@ var fail;
 
 	fail = function(actual, expected, message, operator, stackStartFunction) {
 		
-		throw new AssertionError({
+		var error = new AssertionError({
 			message: message,
 			actual: actual,
 			expected: expected,
 			operator: operator,
 			stackStartFunction: stackStartFunction
 		});
+		
+		
+		if (__listeners.emit(error))
+			return;
+		
+		throw error;
 	};
 
 	assert.AssertionError = AssertionError;

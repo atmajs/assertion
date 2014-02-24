@@ -83,7 +83,38 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 		...
 		all other built-in types
 	```
+
+- jQuery
+	**jQuery Assertion Extensions**
+	```javascript
+		$.fn.$eq
+		$.fn.$notEq
+		$.fn.$deepEq
+		$.fn.$notDeepEq
+		$.fn.$has
+		$.fn.$hasNot
+	```
+	Functions API:
+	- Get Property
+		- ``` (Key, Expected) ```
+		- ``` ([Key, Expected], message) ```
+	- Function call
+		- ``` (FnName [, ...arguments], Expected) ```
+		- ``` ([FnName [, ...arguments], Expected], message) ```
 	
+	Example:
+	```javascript
+	// <div class='container' id='foo'><span>Baz</span></div>
+	$('.container)
+		.$eq('length', 1)
+		.$eq('attr', 'id', 'foo')
+		.$eq('hasClass', 'container', true)
+		.$has('html', 'span')
+		.$eq('text', 'Baz')
+		;
+	```
+	
+
 - `await`
 	**Wait for a callback**
 	

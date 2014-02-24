@@ -1,5 +1,17 @@
 // import /src/license.txt
-// import /src/umd-head.js
+(function(root, factory){
+	
+	var _exports = {},
+		_global = typeof window !== 'undefined'
+		? window
+		: global
+		;
+	
+	factory(_global, _exports);
+	
+	include.exports = _exports;
+	
+}(this, function(global, exports){
 
 	// import /src/scope-vars.js
 	

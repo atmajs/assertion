@@ -28,5 +28,10 @@
 			fail(actual, expected, message, '!==', assert.notStrictEqual);
 
 	};
+	
+	assert.eq = assert.equal;
+	assert.notEq = assert.notEqual;
+	assert.strictEq = assert.strictEqual;
+	assert.notStrictEq = assert.notStrictEqual;
 
 }());
