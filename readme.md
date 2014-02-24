@@ -105,7 +105,7 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 	Example:
 	```javascript
 	// <div class='container' id='foo'><span>Baz</span></div>
-	$('.container)
+	$('.container')
 		.$eq('length', 1)
 		.$eq('attr', 'id', 'foo')
 		.$eq('hasClass', 'container', true)
