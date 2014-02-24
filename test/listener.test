@@ -1,0 +1,36 @@
+UTest({
+	
+	'error listener': function(){
+		
+		function listener(error) {
+			assume();
+			notEq(error.message.indexOf(expect), -1);
+			assert(error instanceof A.assert.AssertionError);
+		}
+		
+		var assume,
+			expect;
+		
+		A.assert.on(listener);
+		
+		expect = 'String not equal';
+		assume = assert.callback(function(){});
+		A.assert.eq('a', 'b', expect);
+		
+		expect = 'Array not equal';
+		assume = assert.callback(function(){});
+		A.assert.deepEq([3], [2, 3], expect);
+		
+		
+		A.assert.off(listener);
+		
+		var errorFn = assert.callback(function(){});
+		try {
+			A.assert.has('one', 'eno');
+		} catch(error) {
+			assert(error instanceof A.assert.AssertionError);
+			errorFn();
+		}
+	}
+	
+})

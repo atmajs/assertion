@@ -2,8 +2,12 @@ Assertion Library for Browsers and NodeJS
 ----
 [![Build Status](https://travis-ci.org/atmajs/assertion.png?branch=master)](https://travis-ci.org/atmajs/assertion)
 
-Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
+Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module. And is part of the [uTest](https://github.com/atmajs/utest) Library.
 
+_As a standalone module can be found in NPM repository_
+```bash
+npm install assertion
+```
 
 ##### API
 
@@ -14,10 +18,9 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 ###### Additional API
 
 - `has / hasNot`
+
 	**Subset matching**
-	
 	```javascript
-	
 	// Substring search
 	assert.has(String, String | RegExp, ?message);
 	
@@ -60,6 +63,7 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 	```
 
 - `is/isNot`
+
 	**Type check**
 	```javascript
 		// Check by Typename
@@ -85,6 +89,7 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 	```
 
 - jQuery
+
 	**jQuery Assertion Extensions**
 	```javascript
 		$.fn.$eq
@@ -126,16 +131,17 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 	
 
 - `await`
-	**Wait for a callback**
+
+	_**Wait for a callback**_
 	
-	Create a wrapper function to ensure that the function is called.
+	Creates a wrapper function to ensure that the function is called.
 	```javascript
 		// ! Arguments order does not matter
 		var fn = assert.await(
-			String   /* optional - name of this wrapper */
-			Function /* optional - wrap the function */,
-			Object   /* optional - use binded context */,
-			Number   /* optional - expectation count, default is `1` */
+			String   /* optional - name of this wrapper*/
+			Function /* optional - wrap the function*/,
+			Object   /* optional - use binded context*/,
+			Number   /* optional - expectation count, default is `1`*/
 		);
 		
 		// creates item in assert.callbacks
@@ -164,4 +170,11 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 		
 	```
 	
+- Listener
 	
+	You can attach listener to the assertions, so that the expceptions are not thrown, but passed to the listener.
+	```javascript
+	assert.on(function(error){
+		error instanceof assert.AssertionError;
+	});
+	```

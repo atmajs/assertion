@@ -2,26 +2,27 @@ var __listeners;
 
 (function(){
 	
+	
+	assert.on = function(listener, decorator) {
+		cbs.push({
+			listener: listener,
+			decorator: decorator
+		});
+	};
+	
+	assert.off = function(listener){
+		
+		var i = cbs.length;
+		while ( --i !== -1 ) {
+			cbs[i].listener === listener;
+			cbs.splice(i, 1);
+		}
+	};
+	
+	
 	var cbs = [];
 	
 	__listeners = {
-		
-		on: function(listener, decorator) {
-			cbs.push({
-				listener: listener,
-				decorator: decorator
-			});
-		},
-		
-		off: function(listener){
-			
-			var i = cbs.length;
-			while ( --i !== -1 ) {
-				cbs[i].listener === listener;
-				cbs.splice(i, 1);
-			}
-			
-		},
 		
 		emit: function(error) {
 			
@@ -54,6 +55,6 @@ var __listeners;
 			
 		}
 		
-	}
+	};
 	
 }());
