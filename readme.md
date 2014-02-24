@@ -104,12 +104,22 @@ Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module.
 	
 	Example:
 	```javascript
-	// <div class='container' id='foo'><span>Baz</span></div>
+	// <div class='container' id='foo'>
+	//		<h4>Baz</h4>
+	//		<span>Qux</span>
+	// </div>
+	
 	$('.container')
 		.$eq('length', 1)
 		.$eq('attr', 'id', 'foo')
 		.$eq('hasClass', 'container', true)
+		
+		.children()
+		.$eq('length', 2)
 		.$has('html', 'span')
+		
+		.filter('h4')
+		.$eq('length', 1)
 		.$eq('text', 'Baz')
 		;
 	```
