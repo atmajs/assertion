@@ -1,13 +1,22 @@
 (function() {
+	
+	var has,
+		hasNot;
 
-
-	assert.has = function has(actual, expected, message) {
+	has =
+	assert.has =
+	function has(actual, expected, message) {
 		_performHas(actual, expected, true, message, has);
 	};
 
-	assert.hasNot = function hasNot(actual, expected, message) {
+	hasNot = 
+	assert.hasNot =
+	function hasNot(actual, expected, message) {
 		_performHas(actual, expected, false, message, hasNot);
 	}
+	
+	assert.has_ = has;
+	assert.hasNot_ = hasNot;
 
 	// = private
 	var OPERATOR = '\u2287';

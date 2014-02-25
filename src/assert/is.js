@@ -1,13 +1,26 @@
 (function(){
 	
+	var is,
+		isNot
+		;
 	
-	assert.is = function is(actual, expected, message) {
+	
+	is =
+	assert.is =
+	function is(actual, expected, message) {
 		_performCheck(actual, expected, true, message, is);
 	};
 
-	assert.isNot = function isNot(actual, expected, message) {
+	isNot =
+	assert.isNot =
+	function isNot(actual, expected, message) {
 		_performCheck(actual, expected, false, message, isNot);
-	}
+	};
+	
+	
+	assert.is_ = is;
+	assert.isNot_ = isNot;
+	
 
 	
 	function _performCheck(actual, expected, expectedResult, message, stackStartFunction) {

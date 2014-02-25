@@ -1,21 +1,29 @@
 (function() {
-
-
-	assert.deepEqual = function deepEqual(actual, expected, message) {
+	
+	var deepEqual,
+		notDeepEqual
+		;
+	
+	assert.deepEqual =
+	deepEqual =
+	function deepEqual(actual, expected, message) {
 		
 		if (_deepEqual(actual, expected) === false) 
 			fail(actual, expected, message, 'deepEqual', deepEqual);
 	};
 
 	
-	assert.notDeepEqual = function notDeepEqual(actual, expected, message) {
+	assert.notDeepEqual =
+	notDeepEqual =
+	function notDeepEqual(actual, expected, message) {
 		
 		if (_deepEqual(actual, expected) === true) 
 			fail(actual, expected, message, 'notDeepEqual', notDeepEqual);
 	};
 	
-	assert.deepEq = assert.deepEqual;
-	assert.notDeepEq = assert.notDeepEqual;
+	
+	assert.deepEq_ = deepEqual;
+	assert.notDeepEq_ = notDeepEqual;
 	
 	function _deepEqual(a, b) {
 		

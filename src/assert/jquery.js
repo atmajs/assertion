@@ -10,17 +10,17 @@
 	function setDOMLibrary($) {
 		
 		[
-			'$eq',
-			'$notEq',
+			'eq_',
+			'notEq_',
 			
-			'$deepEq',
-			'$notDeepEq',
+			'deepEq_',
+			'notDeepEq_',
 			
-			'$has',
-			'$hasNot',
+			'has_',
+			'hasNot_',
 			
-			'$is',
-			'$isNot'
+			'is_',
+			'isNot_'
 		]
 		.forEach(function(key){
 			
@@ -36,8 +36,8 @@
 				
 				
 				switch(key){
-					case '$has':
-					case '$hasNot':
+					case 'has_':
+					case 'hasNot_':
 						var selector = args[0];
 						if (typeof selector !== 'string') 
 							break;
@@ -50,24 +50,24 @@
 						if ($els.length === 0) 
 							$els = this.filter(selector);
 						
-						if ('$has' === key) {
+						if ('has_' === key) {
 							
 							if (isNaN(count)) {
-								assert_do('notEq', $els.length, 0, message);
+								assert_do('notEq_', $els.length, 0, message);
 								return this;
 							}
 							
-							assert_do('eq', $els.length, count, message);
+							assert_do('eq_', $els.length, count, message);
 						}
 						
-						if ('$hasNot' === key) {
+						if ('hasNot_' === key) {
 							
 							if (isNaN(count)) {
-								assert_do('eq', $els.length, 0, message);
+								assert_do('eq_', $els.length, 0, message);
 								return this;
 							}
 							
-							assert_do('notEq', $els.length, count, message);
+							assert_do('notEq_', $els.length, count, message);
 						}
 						
 						return this;
@@ -81,13 +81,13 @@
 					
 				if (typeof fn === 'string') {
 					
-					assert_byProperty(key.substring(1), this, fn, args, expected, message);
+					assert_byProperty(key, this, fn, args, expected, message);
 					return this;
 				}
 				
 				if (typeof fn === 'function') {
 					
-					assert_byFunction(key.substring(1), this, fn, expected, message);
+					assert_byFunction(key, this, fn, expected, message);
 					return this;
 				}
 				

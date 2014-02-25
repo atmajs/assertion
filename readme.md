@@ -92,12 +92,12 @@ npm install assertion
 
 	**jQuery Assertion Extensions**
 	```javascript
-		$.fn.$eq
-		$.fn.$notEq
-		$.fn.$deepEq
-		$.fn.$notDeepEq
-		$.fn.$has
-		$.fn.$hasNot
+		$.fn.eq_
+		$.fn.notEq_
+		$.fn.deepEq_
+		$.fn.notDeepEq_
+		$.fn.has_
+		$.fn.hasNot_
 	```
 	Functions API:
 	- Get Property
@@ -120,22 +120,22 @@ npm install assertion
 	// </div>
 	
 	$('.container')
-		.$eq('length', 1)
-		.$eq('attr', 'id', 'foo')
-		.$eq('hasClass', 'container', true)
+		.eq_('length', 1)
+		.eq_('attr', 'id', 'foo')
+		.eq_('hasClass', 'container', true)
 		
 		.children()
-		.$eq('length', 2)
-		.$has('html', 'span')
+		.eq_('length', 2)
+		.has_('html', 'span')
 		
 		.filter('h4')
-		.$eq('length', 1)
-		.$eq('text', 'Baz')
+		.eq_('length', 1)
+		.eq_('text', 'Baz')
 		;
 		
 	$('.container')
-		.$has('h4')
-		.$hasNot('h1')
+		.has_('h4')
+		.hasNot_('h1')
 		;
 	```
 	

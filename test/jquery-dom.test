@@ -14,13 +14,13 @@ include
 				try {
 					$(dom)
 						.find('h4')
-						.$eq('length', 1)
-						.$eq('text', 'Hello')
-						.$has('html', 'span')
+						.eq_('length', 1)
+						.eq_('text', 'Hello')
+						.has_('html', 'span')
 						
 						.end()
-						.$has('div')
-						.$has('span')
+						.has_('div')
+						.has_('span')
 						;
 				} catch (e) {
 					error = e;
@@ -32,7 +32,7 @@ include
 					
 					$(dom)
 						.find('h4')
-						.$eq(['length', 2], 'foo')
+						.eq_(['length', 2], 'foo')
 						;
 				}
 				catch(error) {
@@ -47,7 +47,7 @@ include
 				try {
 					
 					$(dom)
-						.$has(['span', 2], 'bazput')
+						.has_(['span', 2], 'bazput')
 						;
 				}
 				catch(e) {
