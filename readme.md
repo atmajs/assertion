@@ -107,6 +107,11 @@ npm install assertion
 		- ``` (FnName [, ...arguments], Expected) ```
 		- ``` ([FnName [, ...arguments], Expected], message) ```
 	
+	**`has/hasNot`** 
+	- Node Find/Filter Assertions
+		- ``` (Selector, ?ExpectedCount) ```
+	
+	
 	Example:
 	```javascript
 	// <div class='container' id='foo'>
@@ -126,6 +131,11 @@ npm install assertion
 		.filter('h4')
 		.$eq('length', 1)
 		.$eq('text', 'Baz')
+		;
+		
+	$('.container')
+		.$has('h4')
+		.$hasNot('h1')
 		;
 	```
 	

@@ -72,9 +72,9 @@
 			// structur missmatch
 			return;
 		}
-
+		
 		if (typeof result === 'string') 
-			message = '(' + result + ') ' + message;
+			message = '(' + result + ') ' + (message || '');
 		
 		fail(actual, expected, message, OPERATOR, stackStartFunction);
 	}

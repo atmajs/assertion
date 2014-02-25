@@ -17,13 +17,17 @@ include
 						.$eq('length', 1)
 						.$eq('text', 'Hello')
 						.$has('html', 'span')
+						
+						.end()
+						.$has('div')
+						.$has('span')
 						;
 				} catch (e) {
 					error = e;
 				}
 				eq(error, null);
 				
-				var assume = assert.callback(function(){});
+				var assume = assert.await();
 				try {
 					
 					$(dom)
@@ -34,8 +38,25 @@ include
 				catch(error) {
 					
 					assume();
-					notEq(error.message.indexOf('foo'), -1);
+					assert.has(error.message, 'foo');
 				}
+				
+				
+				assume = assert.await('has no input');
+				error = null;
+				try {
+					
+					$(dom)
+						.$has(['span', 2], 'bazput')
+						;
+				}
+				catch(e) {
+					
+					assume();
+					assert.eq(e.message, 'bazput');
+					error = e;
+				}
+				notEq(error, null);
 			}
 		})
 		
