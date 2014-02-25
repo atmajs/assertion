@@ -24,7 +24,7 @@
 		]
 		.forEach(function(key){
 			
-			$.fn[key] = function(mix){
+			$.fn[key] = function assert_jquery(mix){
 				var args = _Array_slice.call(arguments),
 					message
 					;
@@ -41,13 +41,13 @@
 				
 				if (typeof fn === 'string') {
 					
-					byProperty(key.substring(1), this, fn, args, expected, message);
+					assert_byProperty(key.substring(1), this, fn, args, expected, message);
 					return this;
 				}
 				
 				if (typeof fn === 'function') {
 					
-					byFunction(key.substring(1), this, fn, expected, message);
+					assert_byFunction(key.substring(1), this, fn, expected, message);
 					return this;
 				}
 				
@@ -55,7 +55,7 @@
 			};
 			
 			
-			function byProperty(key, $, prop, args, expected, message) {
+			function assert_byProperty(key, $, prop, args, expected, message) {
 				var val = $[prop];
 				
 				if (typeof val === 'function') 
@@ -64,7 +64,7 @@
 				assert[key](val, expected, message);
 			}
 			
-			function byFunction(key, $, fn, expected, message) {
+			function assert_byFunction(key, $, fn, expected, message) {
 				var val = fn($);
 				
 				assert[key](val, expected, message);

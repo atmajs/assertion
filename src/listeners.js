@@ -21,7 +21,7 @@
 		
 		
 		function wrapFn(fn) {
-			return function(){
+			return function assert_wrapFn(){
 				
 				emit('start');
 				
@@ -41,7 +41,7 @@
 		
 	}(assert, emit));
 	
-	assert.on = function(type, listener) {
+	assert.on = function assert_on(type, listener) {
 		
 		if (_events[type] == null) 
 			_events[type] = [];
@@ -49,7 +49,7 @@
 		_events[type].push(listener);
 	};
 	
-	assert.off = function(type, listener){
+	assert.off = function assert_off(type, listener){
 		
 		var cbs = _events[type];
 		if (cbs == null) 

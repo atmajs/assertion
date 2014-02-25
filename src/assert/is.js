@@ -2,11 +2,11 @@
 	
 	
 	assert.is = function is(actual, expected, message) {
-		_performCheck(actual, expected, true, message, assert.has);
+		_performCheck(actual, expected, true, message, is);
 	};
 
 	assert.isNot = function isNot(actual, expected, message) {
-		_performCheck(actual, expected, false, message, assert.hasNot);
+		_performCheck(actual, expected, false, message, isNot);
 	}
 
 	

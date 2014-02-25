@@ -1,6 +1,6 @@
 {
     "name": "assertion",
-    "version": "0.99.99",
+    "version": "0.99.100",
     "description": "Assertion Library",
     "main": "lib/assert.min.js",
     "scripts": {

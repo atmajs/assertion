@@ -2,11 +2,11 @@
 
 
 	assert.has = function has(actual, expected, message) {
-		_performHas(actual, expected, true, message, assert.has);
+		_performHas(actual, expected, true, message, has);
 	};
 
 	assert.hasNot = function hasNot(actual, expected, message) {
-		_performHas(actual, expected, false, message, assert.hasNot);
+		_performHas(actual, expected, false, message, hasNot);
 	}
 
 	// = private
