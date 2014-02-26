@@ -25,14 +25,14 @@ UTest({
 		
 		//> fail
 		expect = 'String not equal';
-		A.assert.eq('a', 'b', expect);
+		A.assert.eq_('a', 'b', expect);
 		
 		//> fail
 		expect = 'Array not equal';
-		A.assert.deepEq([3], [2, 3], expect);
+		A.assert.deepEq_([3], [2, 3], expect);
 		
 		//> success
-		A.assert.has('foo', 'oo');
+		A.assert.has_('foo', 'oo');
 		
 		
 		A.assert.off('fail', fail);
@@ -40,7 +40,7 @@ UTest({
 		//> throw
 		var errorFn = assert.await();
 		try {
-			A.assert.has('one', 'eno');
+			A.assert.has_('one', 'eno');
 		} catch(error) {
 			assert(error instanceof A.assert.AssertionError);
 			errorFn();

@@ -53,7 +53,7 @@ include
 				catch(e) {
 					
 					assume();
-					assert.eq(e.message, 'bazput');
+					eq(e.message, 'bazput');
 					error = e;
 				}
 				notEq(error, null);
