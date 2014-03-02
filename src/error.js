@@ -17,6 +17,7 @@ var fail;
 
 	assert.AssertionError = AssertionError;
 	assert.fail = fail;
+	assert.prepairStack = stack_prepair;
 	
 	
 	// private
@@ -45,7 +46,7 @@ var fail;
 			this.stack = new Error().stack;
 		}
 		
-		this.stack = prepairStack(this.stack);
+		this.stack = stack_prepair(this.stack);
 	};
 	obj_inherit(AssertionError, Error);
 
@@ -71,34 +72,5 @@ var fail;
 	}
 	
 	
-	function prepairStack(stack) {
-		
-		var lines = stack.split('\n'),
-			startIndex = 1, endIndex = lines.length
-			;
-		
-		var rgx_start = /(^[ \t]*at assert[_\.])|(^[ \t]*at \w+\.assert)/i,
-			rgx_end = /(^[ \t]*at runCase)/i
-			;
-		
-		var i = 0, 
-			imax = lines.length;
-		
-		while ( ++i < imax ){
-			if (rgx_start.test(lines[i])) 
-				startIndex = i + 1;
-			
-			if (rgx_end.test(lines[i])) {
-				endIndex = i;
-				break;
-			}
-		}
-		
-		lines.splice(endIndex);
-		lines.splice(1, startIndex - 1);
-		
-		
-		return lines.join('\n');
-	}
 
 }());

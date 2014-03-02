@@ -35,11 +35,10 @@
 			obj = {
 				count: count,
 				name: name,
-				error: new Error
+				stack: stack_prepair((new Error).stack)
 			};
-			
-		cbs.push(obj);
 		
+		cbs.push(obj);
 		return function(){
 			
 			if (--obj.count === 0) 
