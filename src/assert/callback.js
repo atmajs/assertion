@@ -1,7 +1,10 @@
 (function() {
 	
 	assert.callbacks = [];
-	assert.await = function() {
+	assert.await = assert_await;
+	assert.avoid = assert_avoid;
+	
+	function assert_await() {
 		
 		var fn, name, ctx, count;
 		
@@ -49,6 +52,48 @@
 			
 			return fn.apply(ctx, arguments);
 		}
-	};
+	}
 	
+	function assert_avoid() {
+		var name = 'function',
+			count = 0,
+			ctx,
+			fn;
+			
+		
+		var i = arguments.length,
+			x;
+		while( --i > -1) {
+			x = arguments[i];
+			switch(typeof x) {
+				case 'function':
+					fn = x;
+					break;
+				case 'object':
+					ctx = x;
+					break;
+				case 'number':
+					count = x;
+					break;
+				case 'string':
+					name = x;
+					break;
+			}
+		}
+		
+		return function(mix) {
+			if (--count > -1) 
+				return fn && fn.apply(ctx, arguments);
+			
+			
+			var error = new assert.AssertionError({
+				message: 'Assert::Avoid - <' + name + '> should not be called',
+				actual: mix,
+				operator: fn && fn.toString() || 'call',
+				stackStartFunction: assert_avoid
+			});
+			
+			throw error;
+		};
+	}
 }());

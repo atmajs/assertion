@@ -140,45 +140,67 @@ npm install assertion
 	```
 	
 
-- `await`
+- Assert callbacks calls
 
-	_**Wait for a callback**_
+	- `await`
 	
-	Creates a wrapper function to ensure that the function is called.
-	```javascript
+		_**Wait for a callback**_
+		
+		Creates a wrapper function to ensure that the function is called.
+		```javascript
+			// ! Arguments order does not matter
+			var fn = assert.await(
+				String   /* optional - name of this wrapper*/
+				Function /* optional - wrap the function*/,
+				Object   /* optional - use binded context*/,
+				Number   /* optional - expectation count, default is `1`*/
+			);
+			
+			// creates item in assert.callbacks
+			[
+				{
+					name: String,
+					error: Error, // to receive the stack trace
+					count: Number
+				}
+			];
+			
+			// after the `fn` function is called `count` times, then the object is removed
+			// from the callbacks set
+			
+			
+			// Example
+			var fn = assert.await();
+			assert.callbacks.length === 1;
+			try {
+				throw new Error()
+			} catch {
+				fn();
+			}
+			
+			assert.callbacks.length === 0;
+			
+		```
+	- `avoid`
+	
+		_Unexpect more then N function calls_
+		```javascript
 		// ! Arguments order does not matter
-		var fn = assert.await(
+		var fn = assert.avoid(
 			String   /* optional - name of this wrapper*/
 			Function /* optional - wrap the function*/,
 			Object   /* optional - use binded context*/,
-			Number   /* optional - expectation count, default is `1`*/
+			Number   /* optional - amount of allowed calls, default is `0`*/
 		);
 		
-		// creates item in assert.callbacks
-		[
-			{
-				name: String,
-				error: Error, // to receive the stack trace
-				count: Number
-			}
-		];
+		fooDfr()
+			.fail(assert.avoid())
+			.done(function(){
+				// ..
+			})
+			
 		
-		// after the `fn` function is called `count` times, then the object is removed
-		// from the callbacks set
-		
-		
-		// Example
-		var fn = assert.await();
-		assert.callbacks.length === 1;
-		try {
-			throw new Error()
-		} catch {
-			fn();
-		}
-		
-		assert.callbacks.length === 0;
-		
-	```
+		```
 	
 - Listener
 	

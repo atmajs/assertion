@@ -25,19 +25,22 @@
 		function wrapFn(fn) {
 			return function assert_wrapFn(){
 				
+				var result;
 				emit('start');
 				
 				try {
-					fn.apply(this, arguments);
+					result = fn.apply(this, arguments);
 				} catch(error) {
 					
 					if (emit('fail', error) === false) 
 						throw error;
 					
-					return;
+					return null;
 				}
 				
 				emit('success');
+				
+				return result;
 			};
 		}
 		

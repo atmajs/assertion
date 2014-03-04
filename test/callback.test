@@ -1,6 +1,6 @@
 
 UTest({
-	'callback': function(){
+	'await': function(){
 		
 		var await = A.assert.await('foo', 2);
 		
@@ -14,5 +14,24 @@ UTest({
 		
 		await();
 		eq(A.assert.callbacks.length, 0);
+	},
+	
+	'avoid': function(){
+		var avoid = A.assert.avoid('foo', 1),
+			error;
+		
+		is_(avoid, 'Function');
+		avoid();
+		
+		try {
+			avoid();
+		} catch(e){
+			
+			has_(e.message, 'foo');
+			error = e;
+		}
+		
+		notEq_(error, null);
 	}
+	
 });
