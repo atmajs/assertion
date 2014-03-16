@@ -17,21 +17,22 @@ UTest({
 	},
 	
 	'avoid': function(){
-		var avoid = A.assert.avoid('foo', 1),
+		
+		var fn = assert.await('avoided', function(key){
+			eq_(key, 'foo');
+		}, 2);
+		
+		var avoid = A.assert.avoid('foo', fn, 1),
 			error;
 		
 		is_(avoid, 'Function');
-		avoid();
+		avoid('foo'); // accept one call
+		avoid('foo'); // avoid further calls
 		
-		try {
-			avoid();
-		} catch(e){
-			
-			has_(e.message, 'foo');
-			error = e;
-		}
+		eq_(A.assert.callbacks.length, 1);
 		
-		notEq_(error, null);
+		// clean
+		A.assert.callbacks = [];
 	}
 	
 });
