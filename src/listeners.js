@@ -10,6 +10,7 @@
 			switch(key){
 				case 'callback':
 				case 'await':
+				case 'avoid':
 				case 'fail':
 				case 'prepairStack':
 					continue;

@@ -7,8 +7,8 @@ var stack_prepair;
 			startIndex = 1, endIndex = lines.length
 			;
 		
-		var rgx_start = /(^[ \t]*at [\w\.]*assert[_\.])|(^[ \t]*at \w+\.assert)/i,
-			rgx_end = /(^[ \t]*at runCase)/i
+		var rgx_start = /(^([ \t]*at )?[\w\.]*assert[_\.])|(^([ \t]*at )?\w+\.assert)/i,
+			rgx_end = /(^([ \t]*at )?runCase)/i
 			;
 		
 		var i = 0, 
