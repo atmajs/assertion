@@ -26,6 +26,8 @@
 	assert.notDeepEq_ = notDeepEqual;
 	
 	function _deepEqual(a, b) {
+		if (a == null || b == null) 
+			return a == b;
 		
 		if (a === b) 
 			return true;
