@@ -3,6 +3,9 @@ var stack_prepair;
 (function(){
 	
 	stack_prepair = function(stack) {
+		if (stack == null) 
+			return '';
+		
 		var lines = stack.split('\n'),
 			startIndex = 1, endIndex = lines.length
 			;
