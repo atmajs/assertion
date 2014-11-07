@@ -1,8 +1,11 @@
 Assertion Library for Browsers and NodeJS
 ----
 [![Build Status](https://travis-ci.org/atmajs/assertion.png?branch=master)](https://travis-ci.org/atmajs/assertion)
+[![NPM version](https://badge.fury.io/js/assertion.svg)](http://badge.fury.io/js/assertion)
+[![Bower version](https://badge.fury.io/bo/assertion.svg)](http://badge.fury.io/bo/assertion)
 
-Based on NodeJS [Assert](http://nodejs.org/api/assert.html) module. And is part of the [uTest](https://github.com/atmajs/utest) Library.
+
+Based on the API Interface of the NodeJS [Assert](http://nodejs.org/api/assert.html) module. And is part of the [uTest](https://github.com/atmajs/utest) Library.
 
 _As a standalone module can be found in NPM repository_
 ```bash
@@ -217,3 +220,5 @@ npm install assertion
 		error instanceof assert.AssertionError;
 	});
 	```
+
+:copyright: MIT - The Atma.js Project
