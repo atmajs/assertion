@@ -11,8 +11,9 @@
 				case 'callback':
 				case 'await':
 				case 'avoid':
-				case 'fail':
 				case 'prepairStack':
+				case 'on':
+				case 'off':
 					continue;
 			}
 			
@@ -101,6 +102,4 @@
 		
 		return true;
 	}
-		
-	
 }());

@@ -1,5 +1,6 @@
 (function(){
 	assert.setDOMLibrary = setDOMLibrary;
+	assert.$ = {};
 	
 	var $ = global.$ || global.jQuery || global.Zepto || global.Kimbo;
 	if ($ == null) 
@@ -9,7 +10,8 @@
 	
 	function setDOMLibrary($) {
 		
-		[
+		var Proto =  {};
+		var METHODS =  [
 			'eq_',
 			'notEq_',
 			
@@ -21,10 +23,10 @@
 			
 			'is_',
 			'isNot_'
-		]
-		.forEach(function(key){
-			
-			$.fn[key] = function assert_jquery(mix){
+		];
+		
+		METHODS.forEach(function (key) {
+			Proto[key] = function assert_jquery(mix){
 				var args = _Array_slice.call(arguments),
 					message
 					;
@@ -103,18 +105,29 @@
 				
 				assert[key](val, expected, message);
 			}
-			
 			function assert_byFunction(key, $, fn, expected, message) {
 				var val = fn($);
 				
 				assert[key](val, expected, message);
 			}
-			
 			function assert_do(key, actual, expected, message){
 				
 				assert[key](actual, expected, message);
 			}
+		});
+		
+		METHODS.forEach(function (key) {
+			assert.$[key] = function(){
+				var args = _Array_slice.call(arguments),
+					ctx = args.shift();
+					
+				return Proto[key].apply(ctx, args);
+			};
 			
+			if ($.fn[key] !== void 0) 
+				return;
+			
+			$.fn[key] = Proto[key];
 		});
 		
 	}

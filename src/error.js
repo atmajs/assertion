@@ -2,7 +2,7 @@ var fail;
 
 (function() {
 
-	fail = function(actual, expected, message, operator, stackStartFunction) {
+	fail = function assert_fail (actual, expected, message, operator, stackStartFunction) {
 		
 		var error = new AssertionError({
 			message: message,
@@ -16,7 +16,17 @@ var fail;
 	};
 
 	assert.AssertionError = AssertionError;
-	assert.fail = fail;
+	assert.fail = function (mix) {
+		var error = mix;
+		if (typeof mix === 'string') {
+			error = new AssertionError({
+				message: message
+			});
+		}
+		assert.errors++;
+		
+		throw error;
+	};
 	assert.prepairStack = stack_prepair;
 	
 	
