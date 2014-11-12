@@ -1,8 +1,0 @@
-/*!
- * utest-assert v%VERSION%
- *
- * MIT license
- * http://opensource.org/licenses/MIT
- *
- * (c) 2012, %YEAR%
- */
