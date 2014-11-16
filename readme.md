@@ -111,7 +111,7 @@ npm install assertion
 
 - Aliases
 
-	Therea also aliases (_which can be set to globals, to simplify the write-read of tests_)
+	There are also aliases (_which can be set to globals, to simplify the write-read of tests_)
 	
 	```javascript
 	assert.eq_      === assert.equal
