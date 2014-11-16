@@ -11,6 +11,7 @@
 // import /src/assert/callback.js
 // import /src/assert/equal.js
 // import /src/assert/deepEqual.js
+// import /src/assert/compare.js
 // import /src/assert/has.js
 // import /src/assert/is.js
 // import /src/assert/jquery.js

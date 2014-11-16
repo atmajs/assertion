@@ -22,7 +22,12 @@
 			'hasNot_',
 			
 			'is_',
-			'isNot_'
+			'isNot_',
+			
+			'lt_',
+			'lte_',
+			'gt_',
+			'gte_',
 		];
 		
 		METHODS.forEach(function (key) {

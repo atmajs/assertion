@@ -39,12 +39,6 @@ module.exports = {
 		config: '#[import]'
 	},
 	
-	// `> atma bump`
-	'bump': {
-		action: 'custom',
-		script: 'tools/bump.js'
-	},
-
 	'defaults': ['add-handlers', 'import', 'jshint', 'uglify']
 };
 

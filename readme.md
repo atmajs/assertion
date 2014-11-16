@@ -18,6 +18,20 @@ npm install assertion
 
 - [Assert Documentation](http://nodejs.org/api/assert.html)
 
+	```javascript
+	assert
+	
+		equal
+		notEqual
+		deepEqual
+		notDeepEqual
+		strictEqual
+		notStrictEqual
+		throws
+		doesNotThrow
+		ifError
+	```
+
 ###### Additional API
 
 - `has / hasNot`
@@ -91,9 +105,31 @@ npm install assertion
 		all other built-in types
 	```
 
+- `lessThan` `lessThanOrEqaul` `greaterThan` `greaterThanOrEqual`
+
+	Compares two digits
+
+- Aliases
+
+	Therea also aliases (_which can be set to globals, to simplify the write-read of tests_)
+	
+	```javascript
+	assert.eq_      === assert.equal
+	assert.notEq_   === assert.notEqual
+	
+	assert.lt_      === assert.lessThan
+	assert.lte_     === assert.lessThanOrEqaul
+	assert.gt_      === assert.greaterThan
+	assert.gt_      === assert.greaterThanOrEqual
+	
+	assert.deepEq_  === assert.deepEqual
+	assert.notDeepEq_  === assert.notDeepEqual
+	```
+
+
 - jQuery
 
-	**jQuery Assertion Extensions**
+	**jQuery Assertion Extensions (_alias name syntax_)**
 	```javascript
 		$.fn.eq_
 		$.fn.notEq_
@@ -101,6 +137,10 @@ npm install assertion
 		$.fn.notDeepEq_
 		$.fn.has_
 		$.fn.hasNot_
+		$.fn.lt_
+		$.fn.lte_
+		$.fn.gt_
+		$.fn.gte_
 	```
 	Functions API:
 	- Get Property
@@ -209,10 +249,10 @@ npm install assertion
 	
 	You can attach listener to the assertions.
 	Event Types:
-	- start
-	- fail
+	- `start`
+	- `fail`
 		> if `fail` type listener is attached, then exceptions are not thrown.
-	- success
+	- `success`
 	
 	```javascript
 	// sample
