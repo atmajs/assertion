@@ -56,6 +56,9 @@
 							$els = this.find(selector);
 						if ($els.length === 0) 
 							$els = this.filter(selector);
+						if ($els.length === 0) {
+							$els = querySelector(this, selector);
+						}
 						
 						if ('has_' === key) {
 							
@@ -137,5 +140,12 @@
 		
 	}
 	
-	
+	function querySelector($els, selector) {
+		var set = $();
+		$els.each(function(i, el){
+			var arr = el.querySelectorAll(selector);
+			set = set.add(arr);
+		});
+		return set;
+	}
 }());
