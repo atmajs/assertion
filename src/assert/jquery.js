@@ -92,7 +92,7 @@
 					
 				if (typeof x === 'string') {
 					// jquery property
-					actual = getActual(this, x, args);
+					actual = getActual(this, x, args, expected);
 				}
 				
 				if (typeof x === 'function') {
@@ -104,12 +104,11 @@
 				return this;
 			};
 			
-			function getActual($, prop, args) {
+			function getActual($, prop, args, expected) {
 				if (prop === 'css' && args.length === 1 && $.length !== 0) {
 					var el = $.get(0),
-						styles = getComputedStyle(el);
-					
-					return styles[prop];
+						css = args[0];
+					return style_get(el, css, expected);
 				}
 				
 				var val = $[prop];
