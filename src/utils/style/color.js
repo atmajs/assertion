@@ -8,13 +8,13 @@
 	});
 	
 	function colorDelegate(property) {
-		return function(styles, expect){
-			return color(styles, property, expect);
+		return function(el, expect){
+			return color(el, property, expect);
 		};
 	}
 	
-	function color(styles, property, expect) {
-		var current = styles.getPropertyValue(property);
+	function color(el, property, expect) {
+		var current = getStyle(el, property);
 		if (isEmpty(current)) {
 			return current;
 		}
@@ -61,7 +61,7 @@
 			div = document.createElement('div');
 			document.body.appendChild(div);
 		}
-		div.styles.color = any;
+		div.style.color = any;
 		return getComputedStyle(div).color;
 	}
 }());

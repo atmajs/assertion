@@ -7,11 +7,23 @@ var style_get;
 	// import style/color
 	
 	style_get = function (el, property, expect) {
-		var styles = getComputedStyle(el);
 		var fn = getters[property];
 		if (fn) {
-			return fn(styles, expect);
+			return fn(el, expect);
 		}
-		return styles.getPropertyValue(property);
+		return getStyle(el, property);
 	};
+	
+	
+	function getStyle(el, property) {
+		if (global.getComputedStyle == null) {
+			return $(el).css(property);
+		}
+		
+		var styles = global.getComputedStyle(el);
+		var x = styles.getPropertyValue(property);
+		return x === ''
+			? el.style.getPropertyValue(property)
+			: x;
+	}
 }());

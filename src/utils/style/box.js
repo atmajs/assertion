@@ -9,17 +9,17 @@
 	});
 	
 	function boxSizeDelegate(pattern) {
-		return function(styles){
-			return boxSize(styles, pattern);
+		return function(el){
+			return boxSize(el, pattern);
 		};
 	}
-	function boxSize(styles, pattern) {
+	function boxSize(el, pattern) {
 		var sizes = [];
 		var equal = true;
 		var prev  = null;
 		(['top', 'right', 'bottom', 'left']).forEach(function(anchor){
 			var style = pattern.replace('%anchor', anchor),
-				val = styles.getPropertyValue(style);
+				val = getStyle(el, style);
 			
 			equal = prev == null || prev === val;
 			prev  = val;
