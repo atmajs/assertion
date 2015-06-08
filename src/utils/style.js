@@ -1,4 +1,5 @@
-var style_get;
+var style_get,
+	style_isVisible;
 (function(){
 	
 	var getters = {};
@@ -14,6 +15,17 @@ var style_get;
 		return getStyle(el, property);
 	};
 	
+	style_isVisible = function (el) {
+		var style = getStyle(el, 'display');
+		if (style === 'none') {
+			return false;
+		}
+		var style = getStyle(el, 'visibility');
+		if (style === 'hidden') {
+			return false;
+		}
+		return true;
+	};
 	
 	function getStyle(el, property) {
 		if (global.getComputedStyle == null) {

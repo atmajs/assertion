@@ -43,6 +43,25 @@
 				
 				
 				switch(key){
+					case 'is_':
+					case 'isNot_':
+						if (args.length === 1) {
+							var x = args[0];
+							if ('visible' === x || 'hidden' === x) {
+								var visibility = style_isVisible(this);
+								if (key === 'isNot_') {
+									x = x === 'visible' ? 'hidden' : 'visible';
+								}
+								if ('visible' === x) {
+									eq_(visibility, true, 'Element should be visible');
+								}
+								if ('hidden' === x) {
+									eq_(visibility, false, 'Element should be hidden');
+								}
+								return;
+							}
+						}
+						break;
 					case 'has_':
 					case 'hasNot_':
 						var selector = args[0];
@@ -81,8 +100,6 @@
 						}
 						
 						return this;
-					
-					
 				}
 				
 				var expected = args.pop(),
@@ -137,8 +154,7 @@
 				return;
 			
 			$.fn[key] = Proto[key];
-		});
-		
+		});		
 	}
 	
 	function querySelector($els, selector) {
