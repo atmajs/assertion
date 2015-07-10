@@ -33,6 +33,7 @@
 		METHODS.forEach(function (key) {
 			Proto[key] = function assert_jquery(mix){
 				var args = _Array_slice.call(arguments),
+					method = key,
 					message
 					;
 					
@@ -42,13 +43,13 @@
 				}
 				
 				
-				switch(key){
+				switch(method){
 					case 'is_':
 					case 'isNot_':
 						if (args.length === 1) {
 							var x = args[0];
 							if ('visible' === x || 'hidden' === x) {
-								var visibility = style_isVisible(this);
+								var visibility = style_isVisible(this[0]);
 								if (key === 'isNot_') {
 									x = x === 'visible' ? 'hidden' : 'visible';
 								}
@@ -60,6 +61,9 @@
 								}
 								return;
 							}
+							args.unshift('is');
+							args.push(true);
+							method = 'is_' === method ? 'eq_' : 'notEq_';
 						}
 						break;
 					case 'has_':
@@ -79,7 +83,7 @@
 							$els = querySelector(this, selector);
 						}
 						
-						if ('has_' === key) {
+						if ('has_' === method) {
 							
 							if (isNaN(count)) {
 								assert_do('notEq_', $els.length, 0, message);
@@ -89,7 +93,7 @@
 							assert_do('eq_', $els.length, count, message);
 						}
 						
-						if ('hasNot_' === key) {
+						if ('hasNot_' === method) {
 							
 							if (isNaN(count)) {
 								assert_do('eq_', $els.length, 0, message);
@@ -117,7 +121,7 @@
 					actual = x(this);
 				}
 				
-				assert_do(key, actual, expected, message);
+				assert_do(method, actual, expected, message);
 				return this;
 			};
 			
@@ -136,9 +140,9 @@
 				return val;
 			}
 			
-			function assert_do(key, actual, expected, message){
+			function assert_do(method, actual, expected, message){
 				
-				assert[key](actual, expected, message);
+				assert[method](actual, expected, message);
 			}
 		});
 		

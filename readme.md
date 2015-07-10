@@ -174,6 +174,11 @@ npm install assertion
 		.filter('h4')
 		.eq_('length', 1)
 		.eq_('text', 'Baz')
+		
+		// addition sample
+		.is_('visible'),
+		.is_('hidden')
+		.eq_('css', 'border-left-width', '2px')
 		;
 		
 	$('.container')

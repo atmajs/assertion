@@ -16,6 +16,9 @@ var style_get,
 	};
 	
 	style_isVisible = function (el) {
+		if (el == null) {
+			return false;
+		}
 		var style = getStyle(el, 'display');
 		if (style === 'none') {
 			return false;
