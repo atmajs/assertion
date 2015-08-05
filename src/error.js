@@ -3,7 +3,7 @@ var fail;
 (function() {
 
 	fail = function assert_fail (actual, expected, message, operator, stackStartFunction) {
-		
+
 		var error = new AssertionError({
 			message: message,
 			actual: actual,
@@ -11,7 +11,7 @@ var fail;
 			operator: operator,
 			stackStartFunction: stackStartFunction
 		});
-		
+
 		throw error;
 	};
 
@@ -20,16 +20,16 @@ var fail;
 		var error = mix;
 		if (typeof mix === 'string') {
 			error = new AssertionError({
-				message: message
+				message: mix
 			});
 		}
 		assert.errors++;
-		
+
 		throw error;
 	};
 	assert.prepairStack = stack_prepair;
-	
-	
+
+
 	// private
 
 	// {message, actual, expected }
@@ -46,18 +46,18 @@ var fail;
 			this.message = getMessage(this);
 			this.generatedMessage = true;
 		}
-		
+
 		var stackStartFunction = options.stackStartFunction || fail;
 
 		if (Error.captureStackTrace) {
 			Error.captureStackTrace(this, stackStartFunction);
 		} else {
-			
+
 			this.stack = new Error().stack;
 		}
-		
+
 		this.stack = stack_prepair(this.stack);
-	};
+	}
 	obj_inherit(AssertionError, Error);
 
 	function getMessage(error) {
@@ -80,7 +80,7 @@ var fail;
 
 		return value;
 	}
-	
-	
+
+
 
 }());

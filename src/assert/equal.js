@@ -5,28 +5,32 @@
 			fail(value, true, message, '==', ok);
 	};
 
-	
+
 	var equal,
 		notEqual,
 		strictEqual,
 		notStrictEqual
 		;
-	
-	equal = 
+
+	equal =
 	assert.equal =
 	function equal(actual, expected, message) {
+		/* jshint eqeqeq: false */
 		if (actual != expected)
 			fail(actual, expected, message, '==', equal);
+		/* jshint eqeqeq: true */
 	};
 
-	notEqual = 
+	notEqual =
 	assert.notEqual =
 	function notEqual(actual, expected, message) {
+		/* jshint eqeqeq: false */
 		if (actual == expected)
 			fail(actual, expected, message, '!=', notEqual);
+		/* jshint eqeqeq: true */
 	};
 
-	strictEqual = 
+	strictEqual =
 	assert.strictEqual =
 	function strictEqual(actual, expected, message) {
 		if (actual !== expected)
@@ -34,14 +38,14 @@
 
 	};
 
-	notStrictEqual = 
+	notStrictEqual =
 	assert.notStrictEqual =
 	function notStrictEqual(actual, expected, message) {
 		if (actual === expected)
 			fail(actual, expected, message, '!==', notStrictEqual);
 
 	};
-	
+
 	assert.eq_ = equal;
 	assert.notEq_ = notEqual;
 	assert.strictEq_ = strictEqual;
