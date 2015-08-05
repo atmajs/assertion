@@ -21,7 +21,8 @@
     }
 	function exportsLibrary() {
 		var exports = {};
-		return factory(_global, exports).assert;
+		factory(_global, exports);
+		return exports.assert;
 	}
 
 	if (_isCommonJs) {
