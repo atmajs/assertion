@@ -6,6 +6,9 @@
 	if ($ == null) 
 		return;
 	
+	if (typeof $.fn.eq_ === 'function') 
+		return;
+
 	setDOMLibrary($);
 	
 	function setDOMLibrary($) {
