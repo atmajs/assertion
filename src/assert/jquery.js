@@ -6,9 +6,6 @@
 	if ($ == null) 
 		return;
 	
-	if (typeof $.fn.eq_ === 'function') 
-		return;
-
 	setDOMLibrary($);
 	
 	function setDOMLibrary($) {
@@ -157,6 +154,7 @@
 				return Proto[key].apply(ctx, args);
 			};
 			
+			// If defined leave untouched
 			if ($.fn[key] !== void 0) 
 				return;
 			
