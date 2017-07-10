@@ -1,6 +1,6 @@
 {
     "name": "assertion",
-    "version": "1.3.25",
+    "version": "1.3.26",
     "description": "Assertion Library for Browser and Node.JS",
     "main": "lib/assert.min.js",
     "types": "typings/typings.json",
