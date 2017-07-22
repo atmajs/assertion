@@ -6,7 +6,7 @@
 
 
 	assert.doesNotThrow = function(mix, /*optional*/ message) {
-		_throws.apply(this, [false].concat(_Array_slice.call(arguments)));
+		return _throws.apply(this, [false].concat(_Array_slice.call(arguments)));
 	};
 
 	assert.ifError = function(err) {

@@ -51,10 +51,10 @@ declare namespace assertion {
 		(a: any, b: any, message?: string)			
 	}
 	interface throws {
-		(a: Function, message?: string)			
+		(a: Function, message?: string): Error	
 	}
 	interface notThrows {
-		(a: Function, message?: string)			
+		(a: Function, message?: string): Error	
 	}
 	interface ifError {
 		(a: any, message?: string)			
