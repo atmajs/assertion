@@ -1,7 +1,7 @@
 (function() {
 
 	assert.throws = function(mix, /*optional*/ error, /*optional*/ message) {
-		_throws.apply(this, [true].concat(_Array_slice.call(arguments)));
+		return _throws.apply(this, [true].concat(_Array_slice.call(arguments)));
 	};
 
 
@@ -57,6 +57,7 @@
 		if ((shouldThrow && actual && expected && !expectedException(actual, expected)) || (!shouldThrow && actual)) 
 			throw actual;
 		
+		return actual;
 	}
 	
 	function expectedException(actual, expected) {
