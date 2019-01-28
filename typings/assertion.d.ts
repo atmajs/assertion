@@ -41,26 +41,31 @@ declare namespace assertion {
 
         on: on
         
+        /**
+         *  string: Await Name for better logging
+         *  number: expectation count
+         *  object: binded content
+         *  function: wrap any function
+         */
         await (
-            /* optional - name of this wrapper*/
-            name?: string,   
-            /* optional - wrap the function*/
-            functionToWrapp?: Function, 
-            /* optional - use binded context*/
-            bindCtx?: Object,
-            /* optional - expectation count, default is `1`*/
-            expectCount?: Number   
+            arg1?: string | number | Function | object,   
+            arg2?: string | number | Function | object,   
+            arg3?: string | number | Function | object,   
+            arg4?: string | number | Function | object,   
         ): Function
-
+        
+        
+        /**
+         *  string: Await Name for better logging
+         *  number: expectation count, default is `1`
+         *  object: binded content
+         *  function: wrap any function
+         */
         avoid (
-			/* optional - name of this wrapper*/
-            name?: string,   
-            /* optional - wrap the function*/
-            functionToWrapp?: Function, 
-            /* optional - use binded context*/
-            bindCtx?: Object,
-            /* optional - amount of allowed calls, default is `0`*/
-            expectCount?: Number   
+			arg1?: string | number | Function | object,   
+            arg2?: string | number | Function | object,   
+            arg3?: string | number | Function | object,   
+            arg4?: string | number | Function | object,   
 		);
 	}
 	interface equal {
