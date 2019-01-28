@@ -29,7 +29,7 @@ npm install assertion
 		notStrictEqual
 		throws
 		doesNotThrow
-		ifError
+        ifError
 	```
 
 ###### Additional API

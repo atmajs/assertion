@@ -34,9 +34,32 @@ declare namespace assertion {
 		deepEqual: deepEqual
 		notDeepEqual: notDeepEqual
 		has: has
-		hasNot: hasNot
+        hasNot: hasNot        
+        is: is
 
-		on: on
+        on: on
+        
+        await (
+            /* optional - name of this wrapper*/
+            name?: string,   
+            /* optional - wrap the function*/
+            functionToWrapp?: Function, 
+            /* optional - use binded context*/
+            bindCtx?: Object,
+            /* optional - expectation count, default is `1`*/
+            expectCount?: Number   
+        ): Function
+
+        avoid (
+			/* optional - name of this wrapper*/
+            name?: string,   
+            /* optional - wrap the function*/
+            functionToWrapp?: Function, 
+            /* optional - use binded context*/
+            bindCtx?: Object,
+            /* optional - amount of allowed calls, default is `0`*/
+            expectCount?: Number   
+		);
 	}
 	interface equal {
 		(a: any, b: any, message?: string)
@@ -79,6 +102,34 @@ declare namespace assertion {
 	}
 	interface has {
 		(a: any, b: any, message?: string)
+    }
+    interface is {
+        (a: any, b: 
+            'String' |
+            'Number' |
+            'Null' |
+            'Undefined' |
+            'Function' |
+            'RegExp' |
+            'Date' |
+            'Object' |
+            'CustomEvent' |
+            null | 
+            any, message?: string)
+    }
+    interface isNot {
+		(a: any, b: 
+            'String' |
+            'Number' |
+            'Null' |
+            'Undefined' |
+            'Function' |
+            'RegExp' |
+            'Date' |
+            'Object' |
+            'CustomEvent' |
+            null | 
+            any, message?: string)
 	}
 	interface hasNot {
 		(a: any, b: any, message?: string)
