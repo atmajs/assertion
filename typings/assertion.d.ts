@@ -14,6 +14,8 @@ declare var deepEq_: assertion.deepEqual
 declare var notDeepEq_: assertion.notDeepEqual
 declare var has_: assertion.has
 declare var hasNot_: assertion.hasNot
+declare var is_: assertion.is
+declare var isNot_: assertion.isNot
 
 
 declare namespace assertion {
