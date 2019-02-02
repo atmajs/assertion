@@ -20,7 +20,7 @@ declare var isNot_: assertion.isNot
 
 declare namespace assertion {
 	interface IAssert {
-		(expression: boolean): void
+		(expression: boolean, message: string): void
 		equal: equal
 		notEqual: notEqual
 		strictEqual: strictEqual

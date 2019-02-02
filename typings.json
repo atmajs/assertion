@@ -1,5 +1,5 @@
 {
     "name": "assertion",
-    "main": "typings/assertion.d.ts",
+    "main": "types/assertion.d.ts",
     "global": true
 }
