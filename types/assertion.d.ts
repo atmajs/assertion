@@ -7,7 +7,7 @@ declare var assert: assertion.IAssert
 declare var eq_: assertion.equal
 declare var notEq_: assertion.notEqual
 declare var lt_: assertion.lessThan
-declare var lte_: assertion.lessThanOrEqaul
+declare var lte_: assertion.lessThanOrEqual
 declare var gt_: assertion.greaterThan
 declare var gte_: assertion.greaterThanOrEqual
 declare var deepEq_: assertion.deepEqual
@@ -29,7 +29,7 @@ declare namespace assertion {
 		notThrows: notThrows
 		ifError: ifError
 		lessThan: lessThan
-		lessThanOrEqaul: lessThanOrEqaul
+		lessThanOrEqual: lessThanOrEqual
 		
 		greaterThan: greaterThan
 		greaterThanOrEqual: greaterThanOrEqual
@@ -92,7 +92,7 @@ declare namespace assertion {
 	interface lessThan {
 		(a: any, b: any, message?: string)
 	}
-	interface lessThanOrEqaul {
+	interface lessThanOrEqual {
 		(a: any, b: any, message?: string)
 	}
 	interface greaterThan {
